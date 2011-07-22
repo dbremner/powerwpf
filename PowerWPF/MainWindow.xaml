@@ -1,0 +1,70 @@
+﻿<Window x:Class="PowerWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:PowerWPF="clr-namespace:PowerWPF" Icon="Images/PowerWPF.ico" Title="PowerWPF" >
+    
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="Auto"  />
+            </Grid.RowDefinitions>
+
+            <PowerWPF:MyTool x:Name="MyCustomTool" />
+
+            <StatusBar x:Name="MainStatusBar" Grid.Row="1" Height="25" HorizontalAlignment="Stretch" Background="LightGray">
+
+                <StatusBarItem  HorizontalContentAlignment="Stretch" >
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition MinWidth="265" />
+                            <ColumnDefinition Width="365" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" >
+                            <TextBlock FontStyle="Italic" FontWeight="Bold" Margin="5,0,0,0"  Text="PowerWPF by Antoine Habert  " />
+
+                            <TextBlock >
+                        <Hyperlink NavigateUri="http://www.nelite.com" RequestNavigate="Hyperlink_RequestNavigate">
+                            Nelite Software
+                        </Hyperlink>
+                            </TextBlock>
+
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1">
+
+                            <Button x:Name="RunspaceExclamationImage" Padding="0" BorderThickness="0" Click="ExclamationImage_Click" Visibility="Hidden" Width="25" >
+                                <Button.Content>
+                                    <Image  Source="Images/exclamation.png" />
+                                </Button.Content>
+                            </Button>
+
+                            <Border x:Name="RunspaceBorder" BorderThickness="1" BorderBrush="Black">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Runspace:" FontWeight="Bold" Margin="5,0,0,0" />
+                                    <TextBlock x:Name="RunspaceStatusTextBlock" Width="50" Text="Closed" Margin="5,0,0,0" />
+                                </StackPanel>
+                            </Border>
+
+                            <Button x:Name="PipelineExclamationImage" Padding="0" BorderThickness="0" Click="ExclamationImage_Click" Width="25" Visibility="Hidden" >
+                                <Button.Content>
+                                    <Image  Source="Images/exclamation.png" />
+                                </Button.Content>
+                            </Button>
+
+                            <Border x:Name="PipelineBorder" BorderThickness="1" BorderBrush="Black">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Pipeline:" FontWeight="Bold" Margin="5,0,0,0" />
+                                    <TextBlock x:Name="PipelineStatusTextBlock" HorizontalAlignment="Stretch" Text="Closed" Margin="5,0,5,0" Width="60" />
+                                </StackPanel>
+                            </Border>
+
+                            <ProgressBar x:Name="StatusProgress" Width="60" Margin="5,2,5,2" Minimum="0" Maximum="10"   />
+                        </StackPanel>
+                    </Grid>
+
+                </StatusBarItem>
+            </StatusBar>
+        </Grid>
+    </ScrollViewer>
+</Window>
